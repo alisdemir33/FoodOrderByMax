@@ -11,10 +11,7 @@ const ModalOverlay = (props) => {
   return (
     <div className={classes.modal}>      
      <div className={classes.content}>{props.children}</div>     
-       {/*  <button className={classes.button} type="button" onClick={props.onClose}>
-          Okay
-    </button> */}
-      </div>);
+    </div>);
   
 }
 
@@ -22,7 +19,8 @@ const Modal = React.memo(props => {
   return (
     <React.Fragment>
       {ReactDOM.createPortal(<BackDrop onClose={props.onClose} />,
-        document.getElementById("backdrop-root"))},
+        document.getElementById("backdrop-root"))}
+
       {
         ReactDOM.createPortal(<ModalOverlay title={props.title} onClose={props.onClose}>{props.children}</ModalOverlay>,
         document.getElementById("overlay-root"))

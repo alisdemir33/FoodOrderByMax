@@ -3,6 +3,7 @@ import Header from './components/Layout/Header'
 import Meals from './components/Meals/Meals'
 import Cart from './components/Cart/Cart'
 import Modal from './components/UI/Modal'
+import CartProvider from './store/CartProvider';
 function App() {
   const [showCartFormState, setShowCartFormState] = useState(false);
 
@@ -17,7 +18,7 @@ function App() {
   }  
 
   return (
-    <Fragment>
+    <CartProvider>
         {showCartFormState && 
        <Modal onClose={closeCartForm}>
          {<Cart onClose={closeCartForm}></Cart>} 
@@ -26,7 +27,7 @@ function App() {
        <Header onShowCart={showCartForm}></Header> 
      
       <Meals></Meals>
-    </Fragment>
+    </CartProvider>
   );
 }
 
