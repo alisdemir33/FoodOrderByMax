@@ -28,16 +28,19 @@ const CartProvider = (props) =>{
         //const storedUserLoggedInInformation = localStorage.getItem('isLoggedIn');
        const list = [
             {
+                id:'c1',
                 name: 'snitzel',
                 price: 3.46,
                 amount: 2
             },
             {
+                id:'c2',
                 name: 'soup',
                 price: 1.4,
                 amount: 3
             },
             {
+                id:'c3',
                 name: 'baklava',
                 price: 1.4,
                 amount: 4
