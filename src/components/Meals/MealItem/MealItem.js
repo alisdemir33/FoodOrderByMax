@@ -8,13 +8,14 @@ const MealItem = (props) =>{
 
     const price = `$${props.price.toFixed(2)}`;
 
-    const addItemHandler = (enteredAmount) =>{
+    const addItemHandler = (enteredAmountANDdummy) =>{
 
+        ;debugger
         ctx.addItem( { 
             id:props.id, 
             name:props.name,
             price:props.price,
-            amount:enteredAmount  })
+            amount:enteredAmountANDdummy.amount  })
 
     }
 

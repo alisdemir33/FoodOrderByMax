@@ -6,6 +6,7 @@ import {useRef,useState,useContext} from 'react'
 const MealItemForm = (props) => {
 
   const amountInputRef = useRef();
+  const dummyInputRef =useRef();
   const [formIsValid,setFormIsValid] =useState(true);
  
 
@@ -20,13 +21,17 @@ const MealItemForm = (props) => {
       setFormIsValid(false);
       return;
     }else{
-      props.addItem(amountNumber);
+      props.addItem({ amount:amountNumber,dummyValue:dummyInputRef.current.value});
     //ctx.addItem({});
   }
   }
 
   return (
     <form onSubmit={submitHandler} className={classes.form}>
+      <Input ref ={dummyInputRef}
+      label="Dummy" 
+      input={{ id: 'dummy_'+props.id, type: "text" ,defaultValue:'a'}}></Input>
+      
       <Input ref ={amountInputRef}
       label="Amount" 
       input={{ id: 'amount_'+props.id, type: "number", min:'1',max:'5' ,step:'1' ,defaultValue:'1'}}></Input>
