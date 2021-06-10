@@ -2,11 +2,11 @@ import React, { Fragment } from 'react'
 import AvailableMeals from './AvailableMeals'
 import MealsSummary from './MealsSummary';
 
-const Meals = () => {
+const Meals = (props) => {
 
     return <Fragment>
         <MealsSummary> </MealsSummary>
-        <AvailableMeals></AvailableMeals>
+        <AvailableMeals availableMeals={props.mealList}></AvailableMeals>
     </Fragment>
 }
 export default Meals;

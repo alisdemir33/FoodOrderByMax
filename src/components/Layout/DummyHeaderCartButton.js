@@ -6,25 +6,29 @@ import CartContext from '../../store/CartStore'
 const DummyHeaderCartButton = (props) => {
 
     const[isHighligted,setIsHighligted] = useState(false);
-    const ctx = useContext(CartContext);
-    const {items} = ctx;
+    const [searchFilterValue,setSearchFilterValue] =useState('');
+    //const ctx = useContext(CartContext);
+    //const {items} = ctx;
 
-    useEffect(() => { 
-       if(items.length === 0){
-       return;
-    }
-        setIsHighligted(true);
-       
-       
-      const timer = setTimeout( () =>{
-            setIsHighligted(false);
-        },300); 
-        
-        return () =>{
-            clearTimeout(timer);
+    const searchFilterChangeHandler= (event) =>{
+      // ;debugger
+        if(event !== null && event !== undefined)  {
+        event.preventDefault();
+            setSearchFilterValue(event.target.value);
+            console.log('filter changed..')           
         }
-        
-    }, [items]);
+    }
+
+    useEffect(() => {
+        const identifier = setTimeout(() =>{
+            props.filterMeals(searchFilterValue);
+        }, 1000);
+    
+        return () => {
+          console.log('CLEANUP');
+          clearTimeout(identifier);
+        };
+      }, [searchFilterValue]);
    
     
 
@@ -32,8 +36,8 @@ const DummyHeaderCartButton = (props) => {
 
     return <button onClick={props.onClick} className={btnClasses}>
         <span className={classes.icon}><CartIcon></CartIcon></span>
-        <span>Your Cart</span>
-        <span className={classes.badge}>{ctx.items.reduce( (currNumber,item)=>{ return  currNumber + item.amount },0)}</span>
+        <span><input type="text" value = {searchFilterValue} onChange={searchFilterChangeHandler}></input></span>
+        <span className={classes.badge}>{9}</span>
     </button>
 
 }
