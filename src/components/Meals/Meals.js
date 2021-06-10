@@ -1,12 +1,13 @@
-import React, { Fragment } from 'react'
+import React, { Fragment,useContext } from 'react'
 import AvailableMeals from './AvailableMeals'
 import MealsSummary from './MealsSummary';
 
-const Meals = (props) => {
+
+const Meals = () => { 
 
     return <Fragment>
         <MealsSummary> </MealsSummary>
-        <AvailableMeals availableMeals={props.mealList}></AvailableMeals>
+        <AvailableMeals></AvailableMeals>
     </Fragment>
 }
 export default Meals;

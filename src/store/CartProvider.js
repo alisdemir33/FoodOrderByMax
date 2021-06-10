@@ -77,8 +77,6 @@ const CartProvider = (props) => {
     defaultCartState
   );
 
-
-
   /*     const onAddToCartHandler = (item) => {   
         let newList= [...currentCartList,item];
         setCurrentCartList(newList);
@@ -99,6 +97,8 @@ const CartProvider = (props) => {
     addItem: onAddItemHandler,
     removeItem: onRemoveItemHandler,
   };
+
+  console.log('Cart Before Render')
 
   return (
     <CartContext.Provider value={cartContext}>

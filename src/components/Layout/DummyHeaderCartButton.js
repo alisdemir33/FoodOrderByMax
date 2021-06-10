@@ -2,13 +2,13 @@ import React, {useContext,useEffect,useState }from 'react'
 import classes from './DummyHeaderCartButton.module.css'
 import CartIcon, { icon } from '../Cart/CartIcon'
 import CartContext from '../../store/CartStore'
+import MealsContext from '../../store/MealsStore'
 
 const DummyHeaderCartButton = (props) => {
 
     const[isHighligted,setIsHighligted] = useState(false);
     const [searchFilterValue,setSearchFilterValue] =useState('');
-    //const ctx = useContext(CartContext);
-    //const {items} = ctx;
+    const ctx =  useContext(MealsContext);  
 
     const searchFilterChangeHandler= (event) =>{
       // ;debugger
@@ -21,8 +21,11 @@ const DummyHeaderCartButton = (props) => {
 
     useEffect(() => {
         const identifier = setTimeout(() =>{
-            props.filterMeals(searchFilterValue);
-        }, 1000);
+          ;debugger
+          if(searchFilterValue.length>0){
+            ctx.filterMeals(searchFilterValue);
+          }
+        }, 6000);
     
         return () => {
           console.log('CLEANUP');

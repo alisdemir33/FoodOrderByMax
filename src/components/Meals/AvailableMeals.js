@@ -1,6 +1,9 @@
+import React,{useContext} from 'react'
 import classes from './AvailableMeals.module.css'
 import Card from '../UI/Card'
 import MealItem from './MealItem/MealItem'
+import MealsContext from '../../store/MealsStore'
+
 const DUMMY_MEALS = [
     {
         id: 'm1',
@@ -29,8 +32,9 @@ const DUMMY_MEALS = [
 ];
 
 const AvailableMeals = (props) => {
-
-    const mealsList = props.availableMeals.map((currMeal) => {
+    const ctx =  useContext(MealsContext);
+    ;debugger
+    const mealsList = ctx.meals.map((currMeal) => {
         return (
             <MealItem
                 id={currMeal.id}
